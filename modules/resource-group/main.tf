@@ -48,7 +48,7 @@ data "azuread_group" "this" {
 }
 
 resource "azurerm_role_assignment" "ad_users" {
-  for_each = module.this.enabled ? local.iam_user_role_assignments : {}
+  for_each = module.this.enabled ? local.iam_group_role_assignments : {}
 
   principal_id = data.azuread_user.this[each.key].object_id
   scope        = module.this_resource_group.id
@@ -57,7 +57,7 @@ resource "azurerm_role_assignment" "ad_users" {
 }
 
 resource "azurerm_role_assignment" "ad_group" {
-  for_each = module.this.enabled ? local.iam_user_role_assignments : {}
+  for_each = module.this.enabled ? local.iam_group_role_assignments : {}
 
   principal_id = data.azuread_group.this[each.key].object_id
   scope        = module.this_resource_group.id
