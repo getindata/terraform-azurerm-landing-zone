@@ -1,8 +1,8 @@
 module "resource_group" {
+  for_each = local.resource_groups
+
   source  = "./modules/resource-group"
   context = module.this.context
-
-  for_each = local.resource_groups
 
   name     = each.key
   location = each.value.location

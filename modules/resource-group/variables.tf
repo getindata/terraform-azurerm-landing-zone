@@ -40,23 +40,27 @@ variable "consumption_budgets" {
   default     = {}
   description = <<-EOT
     Consumption budget resources associated with this resource group, it should be a map of values:
-    `{
+    ```
+    {
       amount = number
       time_period = object
       notifications = map
       #optional
       time_grain = string
-    }`
+    }
+    ```
     `time_period` is an object of `start_date` (which is required) and `end_date` (which is optional).
     `time_grain` must be one of Monthly, Quarterly, Annually, BillingMonth, BillingQuarter, or BillingYear. Defaults to Monthly
     `notifications` is a map of values:
-    `{
+    ```
+    {
       #optional
       contact_emails = list(string)
       operator = string
       threshold = string
       threshold_type = string
-    }`
+    }
+    ```
     `contact_emails` is a list of email addresses to send the budget notification to when the threshold is exceeded
     `operator` - the comparison operator for the notification. Must be one of EqualTo, GreaterThan, or GreaterThanOrEqualTo. Defaults to `EqualTo`
     `threshold` - threshold value associated with a notification. Notification is sent when the cost exceeded the threshold. It is always percent and has to be between 0 and 1000. Defaults to 90.

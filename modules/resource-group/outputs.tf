@@ -1,11 +1,11 @@
 output "ad_groups" {
-  value       = module.ad_groups
   description = "Map of AD Groups scoped to this Management Group"
+  value       = module.ad_groups
 }
 
 output "iam_role_assignments" {
-  value       = local.iam_role_assignments
   description = "Map of IAM role assignments for the resource group scope"
+  value       = local.iam_role_assignments
 }
 
 ###################################################
