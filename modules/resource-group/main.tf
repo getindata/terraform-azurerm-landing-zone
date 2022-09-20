@@ -41,14 +41,13 @@ data "azuread_user" "this" {
 }
 
 data "azuread_group" "this" {
-  for_each = module.this.enabled ? local.iam_user_role_assignments : {}
+  for_each = module.this.enabled ? local.iam_group_role_assignments : {}
 
   display_name = each.value.group
-
 }
 
 resource "azurerm_role_assignment" "ad_users" {
-  for_each = module.this.enabled ? local.iam_group_role_assignments : {}
+  for_each = module.this.enabled ? local.iam_user_role_assignments : {}
 
   principal_id = data.azuread_user.this[each.key].object_id
   scope        = module.this_resource_group.id
