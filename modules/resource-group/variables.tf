@@ -70,7 +70,7 @@ variable "consumption_budgets" {
 }
 
 variable "default_consumption_budget_notification_emails" {
+  description = "List of default e-mail addresses that will be used for notifications"
   type        = list(string)
   default     = []
-  description = "List of e-mail addresses that will be used for notifications if they were not provided explicitly"
 }
