@@ -17,8 +17,27 @@ variable "default_resource_group_location" {
   description = "Default Location for resource groups if not provided explicitly"
 }
 
+variable "default_consumption_budgets_notifications" {
+  description = <<EOT
+    Configuration of default notifications
+    map(object({
+      operator       = string
+      threshold      = string
+      threshold_type = string
+      contact_emails = list(string)
+    }))
+  EOT
+  type = map(object({
+    operator       = string
+    threshold      = string
+    threshold_type = string
+    contact_emails = list(string)
+  }))
+  default = {}
+}
+
 variable "default_consumption_budget_notification_emails" {
+  description = "List of default e-mail addresses that will be used for notifications"
   type        = list(string)
   default     = []
-  description = "List of e-mail addresses that will be used for notifications if they were not provided explicitly"
 }
