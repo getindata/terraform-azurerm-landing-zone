@@ -18,7 +18,7 @@ module "this_resource_group" {
 
 module "ad_groups" {
   source  = "getindata/group/azuread"
-  version = "1.0.0"
+  version = "1.0.1"
 
   for_each = local.ad_groups
 
