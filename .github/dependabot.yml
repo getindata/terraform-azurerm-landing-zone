@@ -47,7 +47,7 @@ updates:
       prefix: "chore: "
     labels:
       - "release/patch"
-      -
+
   - package-ecosystem: "terraform"
     directory: "/examples/simple/"
     schedule:
